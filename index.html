@@ -1,18 +1,200 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="ko">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <title>my-first-website</title>
-  <LINK href="styles.css" rel="stylesheet" type="text/css">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>베이비세이프 인그리디언트 AI</title>
+  <link href="styles.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
+  <header class="site-header">
+    <div class="container header-content">
+      <div class="logo">BabySafe AI</div>
+      <nav class="nav">
+        <a href="#features">핵심 기능</a>
+        <a href="#trust">정확도 체계</a>
+        <a href="#workflow">분석 흐름</a>
+        <a href="#architecture">코드 구조</a>
+      </nav>
+      <button class="primary-button">데모 요청</button>
+    </div>
+  </header>
 
-<img src="https://octodex.github.com/images/daftpunktocat-thomas.gif" id="octocat" alt="octocat-gif" />
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">아이를 위한 성분 안전성 분석</p>
+          <h1>음식·화장품 성분을<br>사진 한 장으로 안전하게 확인하세요.</h1>
+          <p class="hero-copy">
+            휴대폰으로 성분표를 촬영하거나 이미지를 업로드하면,
+            OCR + 성분 DB + 임상/규제 근거를 결합한 LLM이 아기에게 유해한지
+            신뢰도 높은 분석 리포트를 제공합니다.
+          </p>
+          <div class="hero-actions">
+            <button class="primary-button">이미지 업로드</button>
+            <button class="ghost-button">샘플 리포트 보기</button>
+          </div>
+          <p class="hero-note">
+            * 의료적 진단을 대체하지 않으며, 위험 가능성은 근거 기반으로 투명하게 제공됩니다.
+          </p>
+        </div>
+        <div class="hero-card">
+          <h3>분석 리포트 미리보기</h3>
+          <ul>
+            <li><strong>성분 총평:</strong> 민감 피부·영아 주의 성분 2건 감지</li>
+            <li><strong>안전 등급:</strong> 주의 (신뢰도 92%)</li>
+            <li><strong>근거 요약:</strong> 국내/해외 안전 가이드 4건 비교</li>
+            <li><strong>대체 추천:</strong> 저자극 대체 성분 3건</li>
+          </ul>
+          <div class="confidence">
+            <span>근거 출처 공개</span>
+            <span>리뷰어 검증</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<!-- Change this code here by copy and pasting your template on line 15 -->
-<p>Welcome to your first GitHub Pages website!</p>
+    <section id="features" class="section">
+      <div class="container">
+        <h2>핵심 기능</h2>
+        <div class="grid-3">
+          <article class="card">
+            <h3>정확한 성분 인식</h3>
+            <p>다국어 OCR과 성분 표준화 엔진으로 스펠링 오류까지 보정해 정확도를 높입니다.</p>
+          </article>
+          <article class="card">
+            <h3>아기 맞춤 위험 분석</h3>
+            <p>영아 피부, 알레르기, 성장 단계별 위험 지표를 분리해 상황별 안내를 제공합니다.</p>
+          </article>
+          <article class="card">
+            <h3>설명 가능한 AI</h3>
+            <p>LLM 답변에 근거 문헌, 안전 가이드, 규제 정보 링크를 함께 제공합니다.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
+    <section id="trust" class="section alt">
+      <div class="container">
+        <h2>정확도·신뢰도 확보 체계</h2>
+        <div class="grid-2">
+          <div class="trust-list">
+            <h3>다층 검증 프로세스</h3>
+            <ol>
+              <li>OCR → 성분 정규화 → 위험 규칙 엔진 선분석</li>
+              <li>LLM이 근거를 요약하되, 근거 미포함 답변은 자동 차단</li>
+              <li>고위험 성분은 전문 리뷰어 큐에 자동 등록</li>
+              <li>모든 리포트에 신뢰도 점수와 근거 링크 표시</li>
+            </ol>
+          </div>
+          <div class="trust-callout">
+            <h3>데이터 근거</h3>
+            <ul>
+              <li>국내 MFDS/식약처, EU SCCS, EWG, FDA 데이터셋 통합</li>
+              <li>소아·영아 관련 임상 연구 분류 태그 적용</li>
+              <li>변경된 규제 업데이트 자동 반영</li>
+            </ul>
+            <p class="trust-note">
+              * 안전성 판단은 공개된 근거와 최신 규제를 기반으로 하며, 불확실성은 명확히 표시합니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="workflow" class="section">
+      <div class="container">
+        <h2>분석 흐름</h2>
+        <div class="timeline">
+          <div class="step">
+            <span class="step-number">1</span>
+            <div>
+              <h3>촬영/업로드</h3>
+              <p>성분표를 촬영하거나 이미지를 업로드합니다.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-number">2</span>
+            <div>
+              <h3>성분 추출 및 정규화</h3>
+              <p>다국어 OCR과 성분 표준화로 오탈자까지 교정합니다.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-number">3</span>
+            <div>
+              <h3>규칙 + LLM 결합 분석</h3>
+              <p>규칙 기반 필터링 후 LLM이 근거 기반 설명을 생성합니다.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-number">4</span>
+            <div>
+              <h3>리포트 제공</h3>
+              <p>안전 등급, 근거, 대체 옵션을 명확하게 제공합니다.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="architecture" class="section alt">
+      <div class="container">
+        <h2>구루들이 추천하는 깔끔한 코드 구조</h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3>모노레포 + 책임 분리</h3>
+            <p>프론트, API, 데이터 파이프라인을 분리하고, 공통 모듈은 shared 패키지로 재사용합니다.</p>
+            <pre class="code-block">apps/
+  web/            # 사용자 웹/모바일 UI
+  api/            # 분석 API (FastAPI/Node)
+packages/
+  ocr/            # OCR 파이프라인
+  risk-engine/    # 규칙 기반 위험 평가
+  llm-core/       # LLM 프롬프트/가드레일
+  ui/             # 디자인 시스템
+infra/
+  docker/         # 배포용 컨테이너
+  terraform/      # 인프라 코드
+</pre>
+          </div>
+          <div class="card">
+            <h3>품질·안전성 체크리스트</h3>
+            <ul class="checklist">
+              <li>PR 템플릿 + 리뷰 가이드로 위험 변경 점검</li>
+              <li>LLM 응답 검증 테스트 + 회귀 테스트 자동화</li>
+              <li>데이터셋 버전 관리와 감사 로그 저장</li>
+              <li>PII 마스킹 및 안전한 저장 정책</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container cta-content">
+        <div>
+          <h2>아기의 안전을 최우선으로.</h2>
+          <p>근거 기반 성분 분석으로 신뢰할 수 있는 결정을 돕는 서비스로 시작하세요.</p>
+        </div>
+        <button class="primary-button">파트너십 문의</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div>
+        <strong>BabySafe AI</strong>
+        <p>근거 기반 성분 분석 | 아기 맞춤 안전성 리포트</p>
+      </div>
+      <div class="footer-meta">
+        <span>contact@babysafe.ai</span>
+        <span>© 2024 BabySafe AI</span>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
