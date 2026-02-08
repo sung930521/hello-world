@@ -1,18 +1,207 @@
 <!DOCTYPE html>
-
-<html>
+<html class="light" lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <title>my-first-website</title>
-  <LINK href="styles.css" rel="stylesheet" type="text/css">
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Pregnancy Safety Scanner</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#0ff06d",
+            "background-light": "#f5f8f7",
+            "background-dark": "#102218",
+          },
+          fontFamily: {
+            "display": ["Manrope", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Manrope', sans-serif;
+      min-height: max(884px, 100dvh);
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .dark .glass-card {
+      background: rgba(16, 34, 24, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
 </head>
-
-<body>
-
-<img src="https://octodex.github.com/images/daftpunktocat-thomas.gif" id="octocat" alt="octocat-gif" />
-
-<!-- Change this code here by copy and pasting your template on line 15 -->
-<p>Welcome to your first GitHub Pages website!</p>
-
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+  <div class="relative flex h-auto min-h-screen w-full max-w-[430px] mx-auto flex-col bg-background-light dark:bg-background-dark overflow-x-hidden shadow-2xl">
+    <!-- Header -->
+    <div class="flex items-center bg-transparent p-6 pb-2 justify-between">
+      <div class="flex flex-col">
+        <p class="text-sm font-medium text-slate-500 dark:text-slate-400">Good morning, Sarah</p>
+        <h2 class="text-[#111814] dark:text-white text-2xl font-extrabold leading-tight tracking-tight">Stay safe today</h2>
+      </div>
+      <div class="flex size-12 shrink-0 items-center justify-center">
+        <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary" data-alt="User profile photo of a smiling woman" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDNZqJic_vuhQLCZcma6Bt_ykh2usBx0cmsA3ikI6CQKZFXZZ6kE2b3tIZzoE6iYTOcWRUwaK3jKwfIEVSMa3UK1uJzLJ-A2bxmsEisT0xvfDQT3ersISJFXZLmXNNilx8F79eNpzbODFVG6fp6rVlR3b3G4c-od5-uhnVP-jdBdr1MvHkcWp6WI37EslgL_vGueArRRK8O5QiNP_aISdFNFWg_Zz9l5BJ_vowoXI9GEQro1bLk5FHnwQB1dDPc-4PYsAFlIHuYqBE");'></div>
+      </div>
+    </div>
+    <!-- Search Bar -->
+    <div class="px-6 py-4">
+      <label class="flex flex-col min-w-40 h-14 w-full">
+        <div class="flex w-full flex-1 items-stretch rounded-xl h-full shadow-sm">
+          <div class="text-slate-400 flex border-none bg-white dark:bg-slate-800 items-center justify-center pl-4 rounded-l-xl border-r-0">
+            <span class="material-symbols-outlined">search</span>
+          </div>
+          <input id="ingredient-search" class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-xl text-[#111814] dark:text-white focus:outline-0 focus:ring-0 border-none bg-white dark:bg-slate-800 focus:border-none h-full placeholder:text-slate-400 px-4 pl-2 text-base font-medium leading-normal" placeholder="Search ingredients or brands..." value=""/>
+        </div>
+      </label>
+    </div>
+    <!-- Hero Scan Section -->
+    <div class="p-6 pt-2">
+      <div class="relative overflow-hidden flex flex-col items-center justify-center rounded-3xl p-8 bg-gradient-to-br from-primary via-[#0de065] to-[#0bc056] shadow-lg shadow-primary/20 text-center">
+        <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 24px 24px;"></div>
+        <div class="relative z-10">
+          <div class="bg-white/20 p-4 rounded-full inline-block mb-4 backdrop-blur-md">
+            <span class="material-symbols-outlined text-white !text-5xl">photo_camera</span>
+          </div>
+          <h3 class="text-white text-2xl font-bold mb-2">Scan Now</h3>
+          <p class="text-white/90 text-sm mb-6 max-w-[200px]">Instantly check if food or cosmetics are safe for you and baby</p>
+          <div class="flex gap-3">
+            <button id="take-photo" class="flex items-center justify-center rounded-full h-12 px-8 bg-white text-[#111814] text-base font-bold shadow-md hover:scale-105 transition-transform active:scale-95">
+              Take Photo
+            </button>
+            <button id="open-gallery" class="flex items-center justify-center rounded-full h-12 w-12 bg-white/20 text-white backdrop-blur-md hover:bg-white/30 transition-colors" aria-label="Upload from gallery">
+              <span class="material-symbols-outlined">image</span>
+            </button>
+            <input id="gallery-input" type="file" accept="image/*" class="hidden" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Category Shortcuts -->
+    <div class="px-6 py-2 flex gap-4 overflow-x-auto no-scrollbar">
+      <div class="flex flex-col items-center gap-2 min-w-[70px]">
+        <div class="w-14 h-14 rounded-2xl bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-blue-500">
+          <span class="material-symbols-outlined">restaurant</span>
+        </div>
+        <span class="text-xs font-bold text-slate-600 dark:text-slate-400">Food</span>
+      </div>
+      <div class="flex flex-col items-center gap-2 min-w-[70px]">
+        <div class="w-14 h-14 rounded-2xl bg-pink-50 dark:bg-pink-900/30 flex items-center justify-center text-pink-500">
+          <span class="material-symbols-outlined">face_3</span>
+        </div>
+        <span class="text-xs font-bold text-slate-600 dark:text-slate-400">Skincare</span>
+      </div>
+      <div class="flex flex-col items-center gap-2 min-w-[70px]">
+        <div class="w-14 h-14 rounded-2xl bg-purple-50 dark:bg-purple-900/30 flex items-center justify-center text-purple-500">
+          <span class="material-symbols-outlined">medication</span>
+        </div>
+        <span class="text-xs font-bold text-slate-600 dark:text-slate-400">Supplements</span>
+      </div>
+      <div class="flex flex-col items-center gap-2 min-w-[70px]">
+        <div class="w-14 h-14 rounded-2xl bg-emerald-50 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-500">
+          <span class="material-symbols-outlined">menu_book</span>
+        </div>
+        <span class="text-xs font-bold text-slate-600 dark:text-slate-400">Guide</span>
+      </div>
+    </div>
+    <!-- Recent Scans -->
+    <div class="flex items-center justify-between px-6 pt-6 pb-3">
+      <h2 class="text-[#111814] dark:text-white text-xl font-bold leading-tight tracking-tight">Recent Scans</h2>
+      <button class="text-primary text-sm font-bold">See all</button>
+    </div>
+    <div class="flex flex-col gap-3 px-6 pb-24">
+      <div class="flex items-center gap-4 bg-white dark:bg-slate-800 p-3 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
+        <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-xl size-16" data-alt="Oatmeal breakfast bar in packaging" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCgrV7H9BdHRnkN_r9tv6-UhpBhVhK3OSdBF6Qf4jcfO1-Tc4uPe2BaGdjoi5SgehLNrZBQ9VPdpEfzO0xrVbuAYDmdsqdHB08G8gKq-s8550iEPXlVtPsmBGlUn4N2gqBDi34PSQUmY3b9B4rycuWEySjXB-pCfQT57mH1UEUpSjL3Y_fEdlA7HzSD2AhM_dqzcD8rALAj2n9aggyws3xS2UtfuBZsXLKtXSogVxsrM_DyAh4WKquaKyPwRf1w7wnOF1IKaqCF2r4");'></div>
+        <div class="flex flex-col justify-center flex-1">
+          <p class="text-[#111814] dark:text-white text-base font-bold leading-none mb-1">Oatmeal Snack Bar</p>
+          <div class="flex items-center gap-1">
+            <span class="material-symbols-outlined text-primary text-sm">verified_user</span>
+            <p class="text-primary text-xs font-extrabold uppercase tracking-wider">Safe</p>
+          </div>
+        </div>
+        <div class="shrink-0 pr-2">
+          <div class="bg-primary/20 text-primary p-1.5 rounded-full flex items-center justify-center">
+            <span class="material-symbols-outlined !text-xl">check</span>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center gap-4 bg-white dark:bg-slate-800 p-3 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
+        <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-xl size-16" data-alt="Luxurious moisturizer cream in glass jar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDwc0Dn4DKErRiGsKdE3ggYalCdIUMij4eqYtInGMMVDMs-YPJ0NTMRT9demYg3PImtelRfBUd1BhAABCvrHpME4n8fCuBeRfi6a7mqZF-BoS-Hwln8V-v0JHGPrjcZarLQQSkydz0ci0kMymi_YoyXijBaLnnNs6gcTtwxI6It2wXKMvEQvWcejl0np63IMJJQzbk9Ai_DzZ3VMt19gtrrJfPRczjZaB0l7AbF6Q25AOWK2SG0w_yi_adyWeQbN7QE3QrRlpYoE_Y");'></div>
+        <div class="flex flex-col justify-center flex-1">
+          <p class="text-[#111814] dark:text-white text-base font-bold leading-none mb-1">Retinol Night Cream</p>
+          <div class="flex items-center gap-1">
+            <span class="material-symbols-outlined text-rose-500 text-sm">warning</span>
+            <p class="text-rose-500 text-xs font-extrabold uppercase tracking-wider">Avoid</p>
+          </div>
+        </div>
+        <div class="shrink-0 pr-2">
+          <div class="bg-rose-100 dark:bg-rose-900/30 text-rose-500 p-1.5 rounded-full flex items-center justify-center">
+            <span class="material-symbols-outlined !text-xl">close</span>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center gap-4 bg-white dark:bg-slate-800 p-3 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
+        <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-xl size-16" data-alt="Bottle of fresh Greek yogurt" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAKM1OXChx1B-LiQ0JJloFFnLjdaBtdltPvRW5emV0bxk_riun2ZZQsGmSjTViCLjwgViuhPam4iYMm0L89mgr4HTrLlGeodq43BYD2JFcSjZYX0Wbc3Al_qCZN78RcxUAE-A8QAFdmGHBqrSNj1rMlYwB7zzixpPpy08GlurIhwr_wKU7in54kfjOcfgyJ4TqyIYVOkIl5qxiU1jmevr96msvyhjvyPQwsA92hcu5NXClysiF5PHkbbnCfxWMEoeCL5YwokyVjvwM");'></div>
+        <div class="flex flex-col justify-center flex-1">
+          <p class="text-[#111814] dark:text-white text-base font-bold leading-none mb-1">Greek Yogurt (Plain)</p>
+          <div class="flex items-center gap-1">
+            <span class="material-symbols-outlined text-primary text-sm">verified_user</span>
+            <p class="text-primary text-xs font-extrabold uppercase tracking-wider">Safe</p>
+          </div>
+        </div>
+        <div class="shrink-0 pr-2">
+          <div class="bg-primary/20 text-primary p-1.5 rounded-full flex items-center justify-center">
+            <span class="material-symbols-outlined !text-xl">check</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Bottom Navigation -->
+    <div class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-t border-slate-100 dark:border-slate-800 flex justify-around items-center py-4 px-2 z-50">
+      <a class="flex flex-col items-center text-primary" href="index.html">
+        <span class="material-symbols-outlined !text-3xl">home</span>
+        <span class="text-[10px] font-bold mt-1">Home</span>
+      </a>
+      <a class="flex flex-col items-center text-slate-400 dark:text-slate-500" href="dictionary.html">
+        <span class="material-symbols-outlined !text-3xl">menu_book</span>
+        <span class="text-[10px] font-bold mt-1">Learn</span>
+      </a>
+      <div class="relative -top-8">
+        <a class="bg-primary p-3 rounded-full text-white shadow-lg shadow-primary/40 ring-4 ring-white dark:ring-slate-900" href="scanner.html" aria-label="Open scanner">
+          <span class="material-symbols-outlined !text-3xl">photo_camera</span>
+        </a>
+      </div>
+      <a class="flex flex-col items-center text-slate-400 dark:text-slate-500" href="result.html">
+        <span class="material-symbols-outlined !text-3xl">history</span>
+        <span class="text-[10px] font-bold mt-1">History</span>
+      </a>
+      <button id="toggle-theme" class="flex flex-col items-center text-slate-400 dark:text-slate-500" aria-label="Toggle theme">
+        <span class="material-symbols-outlined !text-3xl">dark_mode</span>
+        <span class="text-[10px] font-bold mt-1">Theme</span>
+      </button>
+    </div>
+  </div>
+  <script src="app.js"></script>
 </body>
 </html>
