@@ -1,200 +1,207 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html class="light" lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>베이비세이프 인그리디언트 AI</title>
-  <link href="styles.css" rel="stylesheet" type="text/css">
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Pregnancy Safety Scanner</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#0ff06d",
+            "background-light": "#f5f8f7",
+            "background-dark": "#102218",
+          },
+          fontFamily: {
+            "display": ["Manrope", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Manrope', sans-serif;
+      min-height: max(884px, 100dvh);
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .dark .glass-card {
+      background: rgba(16, 34, 24, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
 </head>
-
-<body>
-  <header class="site-header">
-    <div class="container header-content">
-      <div class="logo">BabySafe AI</div>
-      <nav class="nav">
-        <a href="#features">핵심 기능</a>
-        <a href="#trust">정확도 체계</a>
-        <a href="#workflow">분석 흐름</a>
-        <a href="#architecture">코드 구조</a>
-      </nav>
-      <button class="primary-button">데모 요청</button>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <p class="eyebrow">아이를 위한 성분 안전성 분석</p>
-          <h1>음식·화장품 성분을<br>사진 한 장으로 안전하게 확인하세요.</h1>
-          <p class="hero-copy">
-            휴대폰으로 성분표를 촬영하거나 이미지를 업로드하면,
-            OCR + 성분 DB + 임상/규제 근거를 결합한 LLM이 아기에게 유해한지
-            신뢰도 높은 분석 리포트를 제공합니다.
-          </p>
-          <div class="hero-actions">
-            <button class="primary-button">이미지 업로드</button>
-            <button class="ghost-button">샘플 리포트 보기</button>
-          </div>
-          <p class="hero-note">
-            * 의료적 진단을 대체하지 않으며, 위험 가능성은 근거 기반으로 투명하게 제공됩니다.
-          </p>
-        </div>
-        <div class="hero-card">
-          <h3>분석 리포트 미리보기</h3>
-          <ul>
-            <li><strong>성분 총평:</strong> 민감 피부·영아 주의 성분 2건 감지</li>
-            <li><strong>안전 등급:</strong> 주의 (신뢰도 92%)</li>
-            <li><strong>근거 요약:</strong> 국내/해외 안전 가이드 4건 비교</li>
-            <li><strong>대체 추천:</strong> 저자극 대체 성분 3건</li>
-          </ul>
-          <div class="confidence">
-            <span>근거 출처 공개</span>
-            <span>리뷰어 검증</span>
-          </div>
-        </div>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+  <div class="relative flex h-auto min-h-screen w-full max-w-[430px] mx-auto flex-col bg-background-light dark:bg-background-dark overflow-x-hidden shadow-2xl">
+    <!-- Header -->
+    <div class="flex items-center bg-transparent p-6 pb-2 justify-between">
+      <div class="flex flex-col">
+        <p class="text-sm font-medium text-slate-500 dark:text-slate-400">Good morning, Sarah</p>
+        <h2 class="text-[#111814] dark:text-white text-2xl font-extrabold leading-tight tracking-tight">Stay safe today</h2>
       </div>
-    </section>
-
-    <section id="features" class="section">
-      <div class="container">
-        <h2>핵심 기능</h2>
-        <div class="grid-3">
-          <article class="card">
-            <h3>정확한 성분 인식</h3>
-            <p>다국어 OCR과 성분 표준화 엔진으로 스펠링 오류까지 보정해 정확도를 높입니다.</p>
-          </article>
-          <article class="card">
-            <h3>아기 맞춤 위험 분석</h3>
-            <p>영아 피부, 알레르기, 성장 단계별 위험 지표를 분리해 상황별 안내를 제공합니다.</p>
-          </article>
-          <article class="card">
-            <h3>설명 가능한 AI</h3>
-            <p>LLM 답변에 근거 문헌, 안전 가이드, 규제 정보 링크를 함께 제공합니다.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="trust" class="section alt">
-      <div class="container">
-        <h2>정확도·신뢰도 확보 체계</h2>
-        <div class="grid-2">
-          <div class="trust-list">
-            <h3>다층 검증 프로세스</h3>
-            <ol>
-              <li>OCR → 성분 정규화 → 위험 규칙 엔진 선분석</li>
-              <li>LLM이 근거를 요약하되, 근거 미포함 답변은 자동 차단</li>
-              <li>고위험 성분은 전문 리뷰어 큐에 자동 등록</li>
-              <li>모든 리포트에 신뢰도 점수와 근거 링크 표시</li>
-            </ol>
-          </div>
-          <div class="trust-callout">
-            <h3>데이터 근거</h3>
-            <ul>
-              <li>국내 MFDS/식약처, EU SCCS, EWG, FDA 데이터셋 통합</li>
-              <li>소아·영아 관련 임상 연구 분류 태그 적용</li>
-              <li>변경된 규제 업데이트 자동 반영</li>
-            </ul>
-            <p class="trust-note">
-              * 안전성 판단은 공개된 근거와 최신 규제를 기반으로 하며, 불확실성은 명확히 표시합니다.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="workflow" class="section">
-      <div class="container">
-        <h2>분석 흐름</h2>
-        <div class="timeline">
-          <div class="step">
-            <span class="step-number">1</span>
-            <div>
-              <h3>촬영/업로드</h3>
-              <p>성분표를 촬영하거나 이미지를 업로드합니다.</p>
-            </div>
-          </div>
-          <div class="step">
-            <span class="step-number">2</span>
-            <div>
-              <h3>성분 추출 및 정규화</h3>
-              <p>다국어 OCR과 성분 표준화로 오탈자까지 교정합니다.</p>
-            </div>
-          </div>
-          <div class="step">
-            <span class="step-number">3</span>
-            <div>
-              <h3>규칙 + LLM 결합 분석</h3>
-              <p>규칙 기반 필터링 후 LLM이 근거 기반 설명을 생성합니다.</p>
-            </div>
-          </div>
-          <div class="step">
-            <span class="step-number">4</span>
-            <div>
-              <h3>리포트 제공</h3>
-              <p>안전 등급, 근거, 대체 옵션을 명확하게 제공합니다.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="architecture" class="section alt">
-      <div class="container">
-        <h2>구루들이 추천하는 깔끔한 코드 구조</h2>
-        <div class="grid-2">
-          <div class="card">
-            <h3>모노레포 + 책임 분리</h3>
-            <p>프론트, API, 데이터 파이프라인을 분리하고, 공통 모듈은 shared 패키지로 재사용합니다.</p>
-            <pre class="code-block">apps/
-  web/            # 사용자 웹/모바일 UI
-  api/            # 분석 API (FastAPI/Node)
-packages/
-  ocr/            # OCR 파이프라인
-  risk-engine/    # 규칙 기반 위험 평가
-  llm-core/       # LLM 프롬프트/가드레일
-  ui/             # 디자인 시스템
-infra/
-  docker/         # 배포용 컨테이너
-  terraform/      # 인프라 코드
-</pre>
-          </div>
-          <div class="card">
-            <h3>품질·안전성 체크리스트</h3>
-            <ul class="checklist">
-              <li>PR 템플릿 + 리뷰 가이드로 위험 변경 점검</li>
-              <li>LLM 응답 검증 테스트 + 회귀 테스트 자동화</li>
-              <li>데이터셋 버전 관리와 감사 로그 저장</li>
-              <li>PII 마스킹 및 안전한 저장 정책</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="cta">
-      <div class="container cta-content">
-        <div>
-          <h2>아기의 안전을 최우선으로.</h2>
-          <p>근거 기반 성분 분석으로 신뢰할 수 있는 결정을 돕는 서비스로 시작하세요.</p>
-        </div>
-        <button class="primary-button">파트너십 문의</button>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-content">
-      <div>
-        <strong>BabySafe AI</strong>
-        <p>근거 기반 성분 분석 | 아기 맞춤 안전성 리포트</p>
-      </div>
-      <div class="footer-meta">
-        <span>contact@babysafe.ai</span>
-        <span>© 2024 BabySafe AI</span>
+      <div class="flex size-12 shrink-0 items-center justify-center">
+        <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary" data-alt="User profile photo of a smiling woman" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDNZqJic_vuhQLCZcma6Bt_ykh2usBx0cmsA3ikI6CQKZFXZZ6kE2b3tIZzoE6iYTOcWRUwaK3jKwfIEVSMa3UK1uJzLJ-A2bxmsEisT0xvfDQT3ersISJFXZLmXNNilx8F79eNpzbODFVG6fp6rVlR3b3G4c-od5-uhnVP-jdBdr1MvHkcWp6WI37EslgL_vGueArRRK8O5QiNP_aISdFNFWg_Zz9l5BJ_vowoXI9GEQro1bLk5FHnwQB1dDPc-4PYsAFlIHuYqBE");'></div>
       </div>
     </div>
-  </footer>
+    <!-- Search Bar -->
+    <div class="px-6 py-4">
+      <label class="flex flex-col min-w-40 h-14 w-full">
+        <div class="flex w-full flex-1 items-stretch rounded-xl h-full shadow-sm">
+          <div class="text-slate-400 flex border-none bg-white dark:bg-slate-800 items-center justify-center pl-4 rounded-l-xl border-r-0">
+            <span class="material-symbols-outlined">search</span>
+          </div>
+          <input id="ingredient-search" class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-xl text-[#111814] dark:text-white focus:outline-0 focus:ring-0 border-none bg-white dark:bg-slate-800 focus:border-none h-full placeholder:text-slate-400 px-4 pl-2 text-base font-medium leading-normal" placeholder="Search ingredients or brands..." value=""/>
+        </div>
+      </label>
+    </div>
+    <!-- Hero Scan Section -->
+    <div class="p-6 pt-2">
+      <div class="relative overflow-hidden flex flex-col items-center justify-center rounded-3xl p-8 bg-gradient-to-br from-primary via-[#0de065] to-[#0bc056] shadow-lg shadow-primary/20 text-center">
+        <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 24px 24px;"></div>
+        <div class="relative z-10">
+          <div class="bg-white/20 p-4 rounded-full inline-block mb-4 backdrop-blur-md">
+            <span class="material-symbols-outlined text-white !text-5xl">photo_camera</span>
+          </div>
+          <h3 class="text-white text-2xl font-bold mb-2">Scan Now</h3>
+          <p class="text-white/90 text-sm mb-6 max-w-[200px]">Instantly check if food or cosmetics are safe for you and baby</p>
+          <div class="flex gap-3">
+            <button id="take-photo" class="flex items-center justify-center rounded-full h-12 px-8 bg-white text-[#111814] text-base font-bold shadow-md hover:scale-105 transition-transform active:scale-95">
+              Take Photo
+            </button>
+            <button id="open-gallery" class="flex items-center justify-center rounded-full h-12 w-12 bg-white/20 text-white backdrop-blur-md hover:bg-white/30 transition-colors" aria-label="Upload from gallery">
+              <span class="material-symbols-outlined">image</span>
+            </button>
+            <input id="gallery-input" type="file" accept="image/*" class="hidden" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Category Shortcuts -->
+    <div class="px-6 py-2 flex gap-4 overflow-x-auto no-scrollbar">
+      <div class="flex flex-col items-center gap-2 min-w-[70px]">
+        <div class="w-14 h-14 rounded-2xl bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-blue-500">
+          <span class="material-symbols-outlined">restaurant</span>
+        </div>
+        <span class="text-xs font-bold text-slate-600 dark:text-slate-400">Food</span>
+      </div>
+      <div class="flex flex-col items-center gap-2 min-w-[70px]">
+        <div class="w-14 h-14 rounded-2xl bg-pink-50 dark:bg-pink-900/30 flex items-center justify-center text-pink-500">
+          <span class="material-symbols-outlined">face_3</span>
+        </div>
+        <span class="text-xs font-bold text-slate-600 dark:text-slate-400">Skincare</span>
+      </div>
+      <div class="flex flex-col items-center gap-2 min-w-[70px]">
+        <div class="w-14 h-14 rounded-2xl bg-purple-50 dark:bg-purple-900/30 flex items-center justify-center text-purple-500">
+          <span class="material-symbols-outlined">medication</span>
+        </div>
+        <span class="text-xs font-bold text-slate-600 dark:text-slate-400">Supplements</span>
+      </div>
+      <div class="flex flex-col items-center gap-2 min-w-[70px]">
+        <div class="w-14 h-14 rounded-2xl bg-emerald-50 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-500">
+          <span class="material-symbols-outlined">menu_book</span>
+        </div>
+        <span class="text-xs font-bold text-slate-600 dark:text-slate-400">Guide</span>
+      </div>
+    </div>
+    <!-- Recent Scans -->
+    <div class="flex items-center justify-between px-6 pt-6 pb-3">
+      <h2 class="text-[#111814] dark:text-white text-xl font-bold leading-tight tracking-tight">Recent Scans</h2>
+      <button class="text-primary text-sm font-bold">See all</button>
+    </div>
+    <div class="flex flex-col gap-3 px-6 pb-24">
+      <div class="flex items-center gap-4 bg-white dark:bg-slate-800 p-3 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
+        <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-xl size-16" data-alt="Oatmeal breakfast bar in packaging" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCgrV7H9BdHRnkN_r9tv6-UhpBhVhK3OSdBF6Qf4jcfO1-Tc4uPe2BaGdjoi5SgehLNrZBQ9VPdpEfzO0xrVbuAYDmdsqdHB08G8gKq-s8550iEPXlVtPsmBGlUn4N2gqBDi34PSQUmY3b9B4rycuWEySjXB-pCfQT57mH1UEUpSjL3Y_fEdlA7HzSD2AhM_dqzcD8rALAj2n9aggyws3xS2UtfuBZsXLKtXSogVxsrM_DyAh4WKquaKyPwRf1w7wnOF1IKaqCF2r4");'></div>
+        <div class="flex flex-col justify-center flex-1">
+          <p class="text-[#111814] dark:text-white text-base font-bold leading-none mb-1">Oatmeal Snack Bar</p>
+          <div class="flex items-center gap-1">
+            <span class="material-symbols-outlined text-primary text-sm">verified_user</span>
+            <p class="text-primary text-xs font-extrabold uppercase tracking-wider">Safe</p>
+          </div>
+        </div>
+        <div class="shrink-0 pr-2">
+          <div class="bg-primary/20 text-primary p-1.5 rounded-full flex items-center justify-center">
+            <span class="material-symbols-outlined !text-xl">check</span>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center gap-4 bg-white dark:bg-slate-800 p-3 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
+        <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-xl size-16" data-alt="Luxurious moisturizer cream in glass jar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDwc0Dn4DKErRiGsKdE3ggYalCdIUMij4eqYtInGMMVDMs-YPJ0NTMRT9demYg3PImtelRfBUd1BhAABCvrHpME4n8fCuBeRfi6a7mqZF-BoS-Hwln8V-v0JHGPrjcZarLQQSkydz0ci0kMymi_YoyXijBaLnnNs6gcTtwxI6It2wXKMvEQvWcejl0np63IMJJQzbk9Ai_DzZ3VMt19gtrrJfPRczjZaB0l7AbF6Q25AOWK2SG0w_yi_adyWeQbN7QE3QrRlpYoE_Y");'></div>
+        <div class="flex flex-col justify-center flex-1">
+          <p class="text-[#111814] dark:text-white text-base font-bold leading-none mb-1">Retinol Night Cream</p>
+          <div class="flex items-center gap-1">
+            <span class="material-symbols-outlined text-rose-500 text-sm">warning</span>
+            <p class="text-rose-500 text-xs font-extrabold uppercase tracking-wider">Avoid</p>
+          </div>
+        </div>
+        <div class="shrink-0 pr-2">
+          <div class="bg-rose-100 dark:bg-rose-900/30 text-rose-500 p-1.5 rounded-full flex items-center justify-center">
+            <span class="material-symbols-outlined !text-xl">close</span>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center gap-4 bg-white dark:bg-slate-800 p-3 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
+        <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-xl size-16" data-alt="Bottle of fresh Greek yogurt" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAKM1OXChx1B-LiQ0JJloFFnLjdaBtdltPvRW5emV0bxk_riun2ZZQsGmSjTViCLjwgViuhPam4iYMm0L89mgr4HTrLlGeodq43BYD2JFcSjZYX0Wbc3Al_qCZN78RcxUAE-A8QAFdmGHBqrSNj1rMlYwB7zzixpPpy08GlurIhwr_wKU7in54kfjOcfgyJ4TqyIYVOkIl5qxiU1jmevr96msvyhjvyPQwsA92hcu5NXClysiF5PHkbbnCfxWMEoeCL5YwokyVjvwM");'></div>
+        <div class="flex flex-col justify-center flex-1">
+          <p class="text-[#111814] dark:text-white text-base font-bold leading-none mb-1">Greek Yogurt (Plain)</p>
+          <div class="flex items-center gap-1">
+            <span class="material-symbols-outlined text-primary text-sm">verified_user</span>
+            <p class="text-primary text-xs font-extrabold uppercase tracking-wider">Safe</p>
+          </div>
+        </div>
+        <div class="shrink-0 pr-2">
+          <div class="bg-primary/20 text-primary p-1.5 rounded-full flex items-center justify-center">
+            <span class="material-symbols-outlined !text-xl">check</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Bottom Navigation -->
+    <div class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-t border-slate-100 dark:border-slate-800 flex justify-around items-center py-4 px-2 z-50">
+      <a class="flex flex-col items-center text-primary" href="index.html">
+        <span class="material-symbols-outlined !text-3xl">home</span>
+        <span class="text-[10px] font-bold mt-1">Home</span>
+      </a>
+      <a class="flex flex-col items-center text-slate-400 dark:text-slate-500" href="dictionary.html">
+        <span class="material-symbols-outlined !text-3xl">menu_book</span>
+        <span class="text-[10px] font-bold mt-1">Learn</span>
+      </a>
+      <div class="relative -top-8">
+        <a class="bg-primary p-3 rounded-full text-white shadow-lg shadow-primary/40 ring-4 ring-white dark:ring-slate-900" href="scanner.html" aria-label="Open scanner">
+          <span class="material-symbols-outlined !text-3xl">photo_camera</span>
+        </a>
+      </div>
+      <a class="flex flex-col items-center text-slate-400 dark:text-slate-500" href="result.html">
+        <span class="material-symbols-outlined !text-3xl">history</span>
+        <span class="text-[10px] font-bold mt-1">History</span>
+      </a>
+      <button id="toggle-theme" class="flex flex-col items-center text-slate-400 dark:text-slate-500" aria-label="Toggle theme">
+        <span class="material-symbols-outlined !text-3xl">dark_mode</span>
+        <span class="text-[10px] font-bold mt-1">Theme</span>
+      </button>
+    </div>
+  </div>
+  <script src="app.js"></script>
 </body>
 </html>
