@@ -54,6 +54,54 @@ gh api repos/{OWNER}/{REPO}/pages
 ```
 GitHub Pages can take a few minutes to provision on first setup.
 
+## Update the latest branch (PowerShell)
+
+Use these steps to update your local code without getting stuck on pull errors.
+
+### 1) Check which branch you are on
+```powershell
+git status -sb
+```
+If you see `main` (or `master`) here, you’re on the default branch. If your latest work is on a feature branch, switch to it before pulling.
+
+### 2) List remote branches
+```powershell
+git fetch --all --prune
+git branch -r
+```
+Find the branch that has the latest code (for example: `origin/codex/develop-ingredient-analysis-app-for-infants-g6ji9g`).
+
+### 3) Switch to the latest branch
+```powershell
+git checkout codex/develop-ingredient-analysis-app-for-infants-g6ji9g
+```
+If the branch does not exist locally yet:
+```powershell
+git checkout -b codex/develop-ingredient-analysis-app-for-infants-g6ji9g origin/codex/develop-ingredient-analysis-app-for-infants-g6ji9g
+```
+
+### 4) Pull the latest updates
+```powershell
+git pull origin codex/develop-ingredient-analysis-app-for-infants-g6ji9g
+```
+
+### 5) If you still get a pull error
+This usually means you have local changes or a merge conflict:
+```powershell
+git status
+```
+- If you have local changes you don’t need, stash them:
+```powershell
+git stash -u
+git pull origin codex/develop-ingredient-analysis-app-for-infants-g6ji9g
+```
+- If you do need the changes, resolve the conflicts shown by `git status`, then:
+```powershell
+git add .
+git commit -m "Resolve merge conflicts"
+git pull origin codex/develop-ingredient-analysis-app-for-infants-g6ji9g
+```
+
 ## Rename this repository to publish your site
 
 We've already set-up a GitHub Pages website for you, based on your personal username. This repository is called `hello-world`, but you'll rename it to: `username.github.io`, to match your website's URL address. If the first part of the repository doesn’t exactly match your username, it won’t work, so make sure to get it right.
