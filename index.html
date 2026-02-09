@@ -4,12 +4,6 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>Pregnancy Safety Scanner</title>
-  <meta name="theme-color" content="#0ff06d"/>
-  <meta name="apple-mobile-web-app-capable" content="yes"/>
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
-  <meta name="mobile-web-app-capable" content="yes"/>
-  <link rel="apple-touch-icon" href="images/create-octocat.png"/>
-  <link rel="manifest" href="manifest.json"/>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
@@ -136,7 +130,7 @@
       <h2 class="text-[#111814] dark:text-white text-xl font-bold leading-tight tracking-tight">Recent Scans</h2>
       <button class="text-primary text-sm font-bold">See all</button>
     </div>
-    <div id="recent-scans" class="flex flex-col gap-3 px-6 pb-6">
+    <div class="flex flex-col gap-3 px-6 pb-24">
       <div class="flex items-center gap-4 bg-white dark:bg-slate-800 p-3 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
         <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-xl size-16" data-alt="Oatmeal breakfast bar in packaging" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCgrV7H9BdHRnkN_r9tv6-UhpBhVhK3OSdBF6Qf4jcfO1-Tc4uPe2BaGdjoi5SgehLNrZBQ9VPdpEfzO0xrVbuAYDmdsqdHB08G8gKq-s8550iEPXlVtPsmBGlUn4N2gqBDi34PSQUmY3b9B4rycuWEySjXB-pCfQT57mH1UEUpSjL3Y_fEdlA7HzSD2AhM_dqzcD8rALAj2n9aggyws3xS2UtfuBZsXLKtXSogVxsrM_DyAh4WKquaKyPwRf1w7wnOF1IKaqCF2r4");'></div>
         <div class="flex flex-col justify-center flex-1">
@@ -180,37 +174,6 @@
           <div class="bg-primary/20 text-primary p-1.5 rounded-full flex items-center justify-center">
             <span class="material-symbols-outlined !text-xl">check</span>
           </div>
-        </div>
-      </div>
-    </div>
-    <section class="px-6 pb-24">
-      <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm">
-        <div class="flex items-center justify-between mb-3">
-          <h3 class="text-base font-bold text-[#111814] dark:text-white">Security & Data Essentials</h3>
-          <span class="text-xs font-bold text-primary uppercase tracking-wider">Required</span>
-        </div>
-        <ul class="text-sm text-slate-600 dark:text-slate-400 space-y-2">
-          <li>Encrypted storage for scan history & profiles (AES-256 at rest).</li>
-          <li>Role-based access + audit logs for admin and reviewer actions.</li>
-          <li>PII redaction before any AI processing or exports.</li>
-          <li>Versioned ingredient DB with source & update timestamps.</li>
-          <li>Incident alerts for risky ingredients or policy changes.</li>
-        </ul>
-      </div>
-    </section>
-    <div id="consent-modal" class="fixed inset-0 z-50 hidden items-end justify-center bg-black/40 px-6 pb-24">
-      <div class="w-full max-w-[360px] rounded-2xl bg-white dark:bg-slate-900 p-6 shadow-xl">
-        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Safety &amp; Data Consent</h3>
-        <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">
-          To provide accurate analysis, we store scan history on this device and use privacy-first processing. You can update this anytime in settings.
-        </p>
-        <div class="flex gap-3">
-          <button id="consent-decline" class="flex-1 rounded-xl border border-slate-200 dark:border-slate-700 py-2 text-sm font-semibold text-slate-600 dark:text-slate-300">
-            Not now
-          </button>
-          <button id="consent-accept" class="flex-1 rounded-xl bg-primary py-2 text-sm font-bold text-slate-900">
-            I Agree
-          </button>
         </div>
       </div>
     </div>
