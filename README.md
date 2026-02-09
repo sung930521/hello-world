@@ -20,6 +20,40 @@ You are currently viewing your project's **README** file. **_README_** files are
 
 [Learn more about GitHub Pages](https://pages.github.com/)
 
+## GitHub Pages (PowerShell only)
+
+Use these steps when the Pages URL is not showing up yet. This avoids the web UI entirely and uses the GitHub CLI from PowerShell.
+
+### 1) Authenticate with GitHub CLI
+```powershell
+gh auth login
+```
+
+### 2) Set the default branch (if needed)
+```powershell
+git branch -M main
+git push -u origin main
+```
+
+### 3) Enable Pages from the main branch root
+```powershell
+gh api -X POST repos/{OWNER}/{REPO}/pages -f source.branch=main -f source.path=/
+```
+Replace `{OWNER}` with your GitHub username and `{REPO}` with your repository name.
+
+### 4) Check Pages status (wait until it’s built)
+```powershell
+gh api repos/{OWNER}/{REPO}/pages
+```
+Look for the `html_url` field. This is the live URL.
+
+### 5) If the URL is still missing
+Run the status check again after 1–2 minutes:
+```powershell
+gh api repos/{OWNER}/{REPO}/pages
+```
+GitHub Pages can take a few minutes to provision on first setup.
+
 ## Rename this repository to publish your site
 
 We've already set-up a GitHub Pages website for you, based on your personal username. This repository is called `hello-world`, but you'll rename it to: `username.github.io`, to match your website's URL address. If the first part of the repository doesn’t exactly match your username, it won’t work, so make sure to get it right.
