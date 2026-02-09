@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>BabyGuard - Welcome</title>
+  <meta name="theme-color" content="#0ff06d"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="mobile-web-app-capable" content="yes"/>
+  <link rel="apple-touch-icon" href="images/create-octocat.png"/>
+  <link rel="manifest" href="manifest.json"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#0ff06d",
+            "background-light": "#f5f8f7",
+            "background-dark": "#102218",
+          },
+          fontFamily: {
+            "display": ["Manrope", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Manrope', sans-serif;
+      min-height: 100dvh;
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100">
+  <div class="relative flex min-h-screen w-full max-w-[430px] mx-auto flex-col items-center justify-center overflow-hidden bg-background-light dark:bg-background-dark shadow-2xl">
+    <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 2px 2px, #0ff06d 1px, transparent 0); background-size: 28px 28px;"></div>
+    <div class="relative z-10 flex flex-col items-center text-center">
+      <div class="h-20 w-20 rounded-2xl bg-primary/20 flex items-center justify-center mb-6">
+        <span class="text-3xl font-black text-primary">BG</span>
+      </div>
+      <h1 class="text-3xl font-extrabold tracking-tight">BabyGuard AI</h1>
+      <p class="mt-2 text-sm text-slate-500 dark:text-slate-400 max-w-[220px]">
+        Evidence-based ingredient safety for moms & babies.
+      </p>
+      <div class="mt-8 h-2 w-32 rounded-full bg-primary/20 overflow-hidden">
+        <div class="h-full w-1/2 animate-pulse bg-primary"></div>
+      </div>
+      <p class="mt-4 text-xs text-slate-500 dark:text-slate-400">Preparing your safe scan experience...</p>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
