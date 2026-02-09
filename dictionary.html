@@ -4,12 +4,6 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>Pregnancy Safety Dictionary</title>
-  <meta name="theme-color" content="#0ff06d"/>
-  <meta name="apple-mobile-web-app-capable" content="yes"/>
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
-  <meta name="mobile-web-app-capable" content="yes"/>
-  <link rel="apple-touch-icon" href="images/create-octocat.png"/>
-  <link rel="manifest" href="manifest.json"/>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
@@ -76,43 +70,123 @@
         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
           <span class="material-symbols-outlined text-[20px]">search</span>
         </div>
-        <input id="dictionary-search" class="block w-full pl-10 pr-12 py-3 bg-slate-100 dark:bg-slate-800 border-none rounded-xl text-sm focus:ring-2 focus:ring-primary/50 placeholder-slate-500" placeholder="Search ingredients..." type="text"/>
+        <input class="block w-full pl-10 pr-12 py-3 bg-slate-100 dark:bg-slate-800 border-none rounded-xl text-sm focus:ring-2 focus:ring-primary/50 placeholder-slate-500" placeholder="Search 15,000+ ingredients..." type="text"/>
         <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
-          <button id="voice-search" class="text-slate-400" aria-label="Voice search">
-            <span class="material-symbols-outlined text-[20px]">mic</span>
-          </button>
+          <span class="material-symbols-outlined text-slate-400 text-[20px]">mic</span>
         </div>
       </div>
     </div>
     <div class="flex gap-2 px-4 pb-4 overflow-x-auto no-scrollbar">
-      <button data-category="All" data-active="true" class="flex-none px-4 py-1.5 rounded-full bg-primary text-slate-900 text-xs font-bold border border-primary">All</button>
-      <button data-category="Food Additives" class="flex-none px-4 py-1.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-medium border border-slate-200 dark:border-slate-700">Food Additives</button>
-      <button data-category="Skincare" class="flex-none px-4 py-1.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-medium border border-slate-200 dark:border-slate-700">Skincare</button>
-      <button data-category="Food" class="flex-none px-4 py-1.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-medium border border-slate-200 dark:border-slate-700">Food</button>
-      <button data-category="Supplement" class="flex-none px-4 py-1.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-medium border border-slate-200 dark:border-slate-700">Supplements</button>
+      <button class="flex-none px-4 py-1.5 rounded-full bg-primary text-slate-900 text-xs font-bold border border-primary">All</button>
+      <button class="flex-none px-4 py-1.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-medium border border-slate-200 dark:border-slate-700">Food Additives</button>
+      <button class="flex-none px-4 py-1.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-medium border border-slate-200 dark:border-slate-700">Skincare</button>
+      <button class="flex-none px-4 py-1.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-medium border border-slate-200 dark:border-slate-700">Medicines</button>
     </div>
   </div>
   <main class="p-4 space-y-4 pb-24">
-    <div id="dictionary-results" class="space-y-4"></div>
+    <div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
+      <div class="p-4 border-b border-slate-100 dark:border-slate-800">
+        <div class="flex justify-between items-start mb-1">
+          <div>
+            <h2 class="text-lg font-bold text-slate-900 dark:text-white leading-tight">Retinol</h2>
+            <p class="text-xs text-slate-500 dark:text-slate-400 italic">Vitamin A1 Alcohol</p>
+          </div>
+          <div class="flex items-center gap-1.5 bg-avoid/10 text-avoid px-3 py-1 rounded-full">
+            <span class="material-symbols-outlined text-[16px]">dangerous</span>
+            <span class="text-[11px] font-bold uppercase tracking-wider">Avoid</span>
+          </div>
+        </div>
+        <div class="mt-3 flex gap-4">
+          <div class="flex flex-col">
+            <span class="text-[10px] uppercase text-slate-400 font-bold tracking-widest">Category</span>
+            <span class="text-sm font-medium">Cosmetic / Skincare</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-[10px] uppercase text-slate-400 font-bold tracking-widest">Risk Level</span>
+            <span class="text-sm font-medium">High (Teratogenic)</span>
+          </div>
+        </div>
+      </div>
+      <div class="p-4 bg-slate-50 dark:bg-slate-800/50">
+        <div class="flex items-start gap-3 bg-white dark:bg-slate-800 p-4 rounded-lg border-l-4 border-primary shadow-sm">
+          <div class="text-primary flex-none pt-0.5">
+            <span class="material-symbols-outlined">lightbulb</span>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-slate-900 dark:text-white mb-1">Mom's Tip</h4>
+            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              Retinol is linked to birth defects. Try <strong>Bakuchiol</strong> as a plant-based alternative that provides similar anti-aging benefits without the risks associated with Vitamin A.
+            </p>
+          </div>
+        </div>
+        <div class="mt-4 space-y-2">
+          <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest">Why it's unsafe</h4>
+          <p class="text-sm text-slate-600 dark:text-slate-400">
+            Excessive intake or topical absorption of Vitamin A derivatives can interfere with fetal development, specifically affecting the heart and central nervous system.
+          </p>
+        </div>
+        <div class="mt-4 pt-4 border-t border-slate-200 dark:border-slate-700 flex justify-between items-center">
+          <div class="flex items-center gap-1 text-[10px] text-slate-400">
+            <span class="material-symbols-outlined text-[12px]">verified</span>
+            <span>Source: ACOG Guidelines 2024</span>
+          </div>
+          <button class="text-primary text-xs font-bold flex items-center gap-1">
+            View Study <span class="material-symbols-outlined text-[14px]">open_in_new</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-4 shadow-sm">
+      <div class="flex justify-between items-center">
+        <div class="flex items-center gap-4">
+          <div class="w-10 h-10 rounded-lg bg-safe/10 flex items-center justify-center text-safe">
+            <span class="material-symbols-outlined">check_circle</span>
+          </div>
+          <div>
+            <h3 class="font-bold text-slate-900 dark:text-white">Hyaluronic Acid</h3>
+            <p class="text-xs text-slate-500">Hydrating Agent</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-1 bg-safe/10 text-safe px-3 py-1 rounded-full">
+          <span class="text-[11px] font-bold uppercase tracking-wider">Safe</span>
+        </div>
+      </div>
+    </div>
+    <div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-4 shadow-sm">
+      <div class="flex justify-between items-center">
+        <div class="flex items-center gap-4">
+          <div class="w-10 h-10 rounded-lg bg-caution/10 flex items-center justify-center text-caution">
+            <span class="material-symbols-outlined">warning</span>
+          </div>
+          <div>
+            <h3 class="font-bold text-slate-900 dark:text-white">Caffeine</h3>
+            <p class="text-xs text-slate-500">Stimulant / Beverage</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-1 bg-caution/10 text-caution px-3 py-1 rounded-full">
+          <span class="text-[11px] font-bold uppercase tracking-wider">Limit</span>
+        </div>
+      </div>
+    </div>
     <div class="pt-4">
       <h3 class="text-sm font-bold text-slate-400 uppercase tracking-widest px-1 mb-3">Trending Searches</h3>
       <div class="grid grid-cols-2 gap-3">
-        <button data-ingredient="Aspartame" class="bg-white dark:bg-slate-900 p-3 rounded-lg border border-slate-200 dark:border-slate-800 flex items-center gap-2 text-left">
+        <div class="bg-white dark:bg-slate-900 p-3 rounded-lg border border-slate-200 dark:border-slate-800 flex items-center gap-2">
           <span class="material-symbols-outlined text-slate-400 text-sm">trending_up</span>
           <span class="text-sm font-medium">Aspartame</span>
-        </button>
-        <button data-ingredient="Salicylic Acid" class="bg-white dark:bg-slate-900 p-3 rounded-lg border border-slate-200 dark:border-slate-800 flex items-center gap-2 text-left">
+        </div>
+        <div class="bg-white dark:bg-slate-900 p-3 rounded-lg border border-slate-200 dark:border-slate-800 flex items-center gap-2">
           <span class="material-symbols-outlined text-slate-400 text-sm">trending_up</span>
           <span class="text-sm font-medium">Salicylic Acid</span>
-        </button>
-        <button data-ingredient="Parabens" class="bg-white dark:bg-slate-900 p-3 rounded-lg border border-slate-200 dark:border-slate-800 flex items-center gap-2 text-left">
+        </div>
+        <div class="bg-white dark:bg-slate-900 p-3 rounded-lg border border-slate-200 dark:border-slate-800 flex items-center gap-2">
           <span class="material-symbols-outlined text-slate-400 text-sm">trending_up</span>
           <span class="text-sm font-medium">Parabens</span>
-        </button>
-        <button data-ingredient="Folic Acid" class="bg-white dark:bg-slate-900 p-3 rounded-lg border border-slate-200 dark:border-slate-800 flex items-center gap-2 text-left">
+        </div>
+        <div class="bg-white dark:bg-slate-900 p-3 rounded-lg border border-slate-200 dark:border-slate-800 flex items-center gap-2">
           <span class="material-symbols-outlined text-slate-400 text-sm">trending_up</span>
           <span class="text-sm font-medium">Folic Acid</span>
-        </button>
+        </div>
       </div>
     </div>
     <div class="mt-8 bg-gradient-to-br from-primary/20 to-primary/5 p-6 rounded-2xl border border-primary/20 text-center">
@@ -151,6 +225,6 @@
       <span class="text-[10px] font-bold">Profile</span>
     </a>
   </nav>
-  <script type="module" src="app.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>

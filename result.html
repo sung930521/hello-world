@@ -4,12 +4,6 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>Ingredient Analysis Result</title>
-  <meta name="theme-color" content="#0ff06d"/>
-  <meta name="apple-mobile-web-app-capable" content="yes"/>
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
-  <meta name="mobile-web-app-capable" content="yes"/>
-  <link rel="apple-touch-icon" href="images/create-octocat.png"/>
-  <link rel="manifest" href="manifest.json"/>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
@@ -54,17 +48,26 @@
       <span class="material-symbols-outlined">arrow_back_ios_new</span>
     </a>
     <h1 class="text-lg font-bold tracking-tight">Analysis Result</h1>
-    <button id="share-result" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+    <button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
       <span class="material-symbols-outlined">ios_share</span>
     </button>
   </div>
   <main class="max-w-md mx-auto p-4 space-y-6">
     <div class="flex flex-col items-center justify-center py-6 text-center space-y-4">
-      <div class="relative" id="result-badge"></div>
-      <img id="result-image" class="hidden w-full max-w-[240px] rounded-2xl border border-slate-200 dark:border-slate-700" alt="Captured product"/>
+      <div class="relative">
+        <div class="w-40 h-40 rounded-full border-8 border-primary/20 flex items-center justify-center">
+          <div class="w-32 h-32 bg-primary rounded-full flex flex-col items-center justify-center shadow-lg shadow-primary/30">
+            <span class="material-symbols-outlined text-white text-5xl mb-1">verified_user</span>
+            <span class="text-white font-extrabold text-xl leading-none">SAFE</span>
+          </div>
+        </div>
+        <div class="absolute bottom-1 right-1 bg-white dark:bg-slate-900 p-1.5 rounded-full border border-gray-100 dark:border-gray-800 shadow-sm">
+          <span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+        </div>
+      </div>
       <div class="space-y-1">
-        <h2 id="result-title" class="text-2xl font-extrabold text-slate-900 dark:text-white">Scan Result</h2>
-        <p id="result-summary" class="text-slate-500 dark:text-slate-400 font-medium">Run a scan to see a summary.</p>
+        <h2 class="text-2xl font-extrabold text-slate-900 dark:text-white">Glow Radiant Serum</h2>
+        <p class="text-slate-500 dark:text-slate-400 font-medium">Safe for pregnancy &amp; nursing</p>
         <div class="inline-flex items-center gap-1.5 px-3 py-1 bg-primary/10 text-primary-dark rounded-full text-xs font-bold uppercase tracking-wider mt-2">
           <span class="material-symbols-outlined text-sm">auto_awesome</span>
           AI Analysis Verified
@@ -74,17 +77,75 @@
     <section class="space-y-4">
       <div class="flex items-center justify-between px-1">
         <h3 class="text-lg font-bold">Ingredient Analysis</h3>
-        <span id="ingredient-count" class="text-sm font-medium text-primary">0 ingredients total</span>
+        <span class="text-sm font-medium text-primary">6 ingredients total</span>
       </div>
-      <div id="result-ingredients" class="space-y-3"></div>
+      <div class="space-y-3">
+        <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-gray-100 dark:border-gray-800 shadow-sm flex items-start gap-4">
+          <div class="mt-1 w-2 h-2 rounded-full bg-primary flex-shrink-0"></div>
+          <div class="flex-1">
+            <div class="flex justify-between items-start mb-1">
+              <h4 class="font-bold text-slate-900 dark:text-white">Folic Acid</h4>
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 uppercase">Beneficial</span>
+            </div>
+            <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Supports neural tube development and healthy cell growth during early pregnancy.</p>
+          </div>
+        </div>
+        <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-gray-100 dark:border-gray-800 shadow-sm flex items-start gap-4">
+          <div class="mt-1 w-2 h-2 rounded-full bg-primary flex-shrink-0"></div>
+          <div class="flex-1">
+            <div class="flex justify-between items-start mb-1">
+              <h4 class="font-bold text-slate-900 dark:text-white">Hyaluronic Acid</h4>
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 uppercase">Safe</span>
+            </div>
+            <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Hydrates skin naturally. Not absorbed into the bloodstream in harmful amounts.</p>
+          </div>
+        </div>
+        <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-gray-100 dark:border-gray-800 shadow-sm flex items-start gap-4">
+          <div class="mt-1 w-2 h-2 rounded-full bg-caution flex-shrink-0"></div>
+          <div class="flex-1">
+            <div class="flex justify-between items-start mb-1">
+              <h4 class="font-bold text-slate-900 dark:text-white">Fragrance (Parfum)</h4>
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400 uppercase">Caution</span>
+            </div>
+            <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">May cause sensitivity or nausea if you are sensitive to smells. Otherwise safe in low amounts.</p>
+          </div>
+        </div>
+      </div>
     </section>
     <section class="space-y-4 pt-4">
       <h3 class="text-lg font-bold px-1">Highly Recommended Alternatives</h3>
-      <div id="result-alternatives" class="flex overflow-x-auto gap-4 pb-4 snap-x no-scrollbar"></div>
-    </section>
-    <section class="space-y-3">
-      <h3 class="text-lg font-bold px-1">Scan History</h3>
-      <div id="history-list" class="space-y-3"></div>
+      <div class="flex overflow-x-auto gap-4 pb-4 snap-x no-scrollbar">
+        <div class="min-w-[180px] snap-center bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-gray-100 dark:border-gray-800 shadow-sm">
+          <div class="aspect-square w-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center p-4">
+            <div class="w-full h-full bg-cover bg-center rounded-lg" data-alt="Bottle of organic face serum for pregnancy" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDWpe3qE4DVI0mDz86JWusEuA2FX_0Ma3V9aQ-5A4-lJ8mwemUFj7C9cbxgxqVkhgS2P9-8hQtPXLrxaNYslEgxJn7W4C_ZSeQNjpRDIfKfU9rb2hsDW6AwPyLUbafwG2X84_OO1XzBDzCdSTfCNLGBUTmoaCtsS6wKWxqIZi9Vv-Nt-d15A74VZ6tiSo-S6lsMOgKWJuT4N-c_y_ssCu5OIyAUM_xDOaxurOb6MP43r1hXwxsrU_GooHW_bd5RV5f51z5a539B5i4');"></div>
+          </div>
+          <div class="p-3">
+            <p class="text-xs text-primary font-bold uppercase tracking-tighter mb-1">98% Match</p>
+            <h5 class="font-bold text-sm text-slate-900 dark:text-white line-clamp-1">Pure Bloom Mist</h5>
+            <p class="text-xs text-slate-500 dark:text-slate-400">$24.00</p>
+          </div>
+        </div>
+        <div class="min-w-[180px] snap-center bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-gray-100 dark:border-gray-800 shadow-sm">
+          <div class="aspect-square w-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center p-4">
+            <div class="w-full h-full bg-cover bg-center rounded-lg" data-alt="Gentle hydrating moisturizer for sensitive skin" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBAgnHnjLugWLyYi7bwknztMnbnI6oUbTkL4pBY370xXp1d8_jdC7TzdxU1tCuHNsofECnYxNu-45qLp45aKcMIR2ZUCYNttWFALBFDm1IAbY57ti3Tw62Wj4Jeol7_vO-gd75anrj6Uzsz7mAtVmuUjzojY_dCJVZieP9xpKbf906jmnm4ooIjA6OXGAYcQCvvBL3uaqx4aAHoAW7qvWHcmOeGie05XzcyHvvWeKl3WjzpgoRhqRCT8DiX11tcDE1eyDmv_nejjJ8');"></div>
+          </div>
+          <div class="p-3">
+            <p class="text-xs text-primary font-bold uppercase tracking-tighter mb-1">95% Match</p>
+            <h5 class="font-bold text-sm text-slate-900 dark:text-white line-clamp-1">Aloe Gentle Care</h5>
+            <p class="text-xs text-slate-500 dark:text-slate-400">$18.50</p>
+          </div>
+        </div>
+        <div class="min-w-[180px] snap-center bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-gray-100 dark:border-gray-800 shadow-sm">
+          <div class="aspect-square w-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center p-4">
+            <div class="w-full h-full bg-cover bg-center rounded-lg" data-alt="Mineral based sunscreen for expectant mothers" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBGpGYKAqY9MMOI0zoqgJS3QGK4bYYDX7neTAHTy_69u3ZqjhNvp5WUAjVC6Bvwo8uPNYZ9aM1sAUHOiOtNQvPTxit_cc7yrehZuRo5aDPoU25D6fKAcKCnx5-xGo8ikkAvrmLSG_mhxGXBpYoPNKdZYSq98k-_lLxzh54hwAPQFGzVakhIHYntn3GVCp8jcClgZ0rVwV9NXF_jenNl0csKZ_g7VMK64vjzSVaQqQ794Czt_WKP2k2gpXRhF6QbpmLOoSRE9tTja7w');"></div>
+          </div>
+          <div class="p-3">
+            <p class="text-xs text-primary font-bold uppercase tracking-tighter mb-1">Top Rated</p>
+            <h5 class="font-bold text-sm text-slate-900 dark:text-white line-clamp-1">Mineral SPF 30</h5>
+            <p class="text-xs text-slate-500 dark:text-slate-400">$32.00</p>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
   <div class="fixed bottom-0 left-0 right-0 p-4 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm border-t border-gray-200 dark:border-gray-800 max-w-md mx-auto z-50">
@@ -93,6 +154,6 @@
       Scan Another Product
     </a>
   </div>
-  <script type="module" src="app.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
